@@ -1,7 +1,27 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-})
+  optimizeDeps: {
+    include: ['@fortawesome/fontawesome-free']
+  },
+  server: {
+    hmr: {
+      overlay: true // Podés ponerlo en false si querés desactivar el overlay de errores
+    }
+  },
+  css: {
+    preprocessorOptions: {
+      // Si usás SCSS, podés configurar variables globales acá
+      scss: {
+        additionalData: `@import "src/styles/variables.scss";`
+      }
+    }
+  },
+  resolve: {
+    alias: {
+      '@': '/src' // Te permite usar @ como alias para la carpeta src
+    }
+  }
+});

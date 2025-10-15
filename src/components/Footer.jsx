@@ -1,0 +1,33 @@
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import 'font-awesome/css/font-awesome.min.css';
+
+const Footer = () => {
+  return (
+    <footer className="bg-dark text-white text-center py-4 mt-4">
+      <Container>
+        <Row>
+          <col md={6}>
+            <p className="mb-0">Gringo's Supermercados</p>
+            <p className="mb-0">Avenida 7 y 64</p>
+          </col>
+          <col md={6}>
+            <div>
+              <a href="#" className="text-white me-3">
+                <i className="fa fa-facebook fa-2x"></i>
+              </a>
+              <a href="#" className="text-white me-3">
+                <i className="fa fa-twitter fa-2x"></i>
+              </a>
+              <a href="#" className="text-white">
+                <i className="fa fa-instagram fa-2x"></i>
+              </a>
+            </div>
+          </col>
+        </Row>
+      </Container>
+    </footer>
+  );
+};
+
+export default Footer;
