@@ -15,7 +15,7 @@ const Header = () => {
             style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: 'white', padding: '2px' }}
             className="d-inline-block align-top me-2"
           />
-          <span>Gringo's Supermercados - Los mejores precios</span>
+          <span>Gringo's Supermercados - más que súper, genial!</span>
         </Navbar.Brand>
 
         <Nav className="ms-auto align-items-center">

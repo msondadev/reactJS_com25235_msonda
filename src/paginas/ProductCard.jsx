@@ -7,7 +7,7 @@ const ProductCard = ({ product, handleAgregarAlCarrito }) => {
     return (
 
         // Armo la card
-        <Card className='h-100 d-flex flex-column'>
+        <Card className='h-100 d-flex flex-column gringo-card'>
             <Card.Img
                 variant="top"
                 src={product.thumbnail}
