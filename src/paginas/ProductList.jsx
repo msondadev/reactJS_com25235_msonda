@@ -9,16 +9,16 @@ const ProductList = ({ category = null }) =>
 
     useEffect(() =>
     {
-    let url = 'https://fakestoreapi.com/products';
-    if (category)
-    {
-        url = `https://fakestoreapi.com/products/category/${category}`;
-    }    
+    let url = 'https://dummyjson.com/products';
+    // if (category)
+    // {
+    //     url = `https://fakestoreapi.com/products/category/${category}`;
+    // }    
     
         fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            setProducts(data);
+            setProducts(data.products);
             setLoading(false);
         })
         .catch((error) => {
@@ -36,9 +36,18 @@ const ProductList = ({ category = null }) =>
         return <div>Loading...</div>;
     }
 
+    const productosFiltrados = products.filter(p =>
+        p.category.includes('groceries') ||
+        p.title.toLowerCase().includes('oil') ||
+        p.title.toLowerCase().includes('soap') ||
+        p.title.toLowerCase().includes('cleaner') ||
+        p.title.toLowerCase().includes('bread')   
+    );
+
+
     return (
         <Row>
-            {products.map((product) => (
+            {productosFiltrados.map((product) => (
                 <Col md={4} key={product.id} className='mb-4'>
                     <ProductCard product={product} handleAgregarAlCarrito={handleAgregarAlCarrito} />
                 </Col>
@@ -48,3 +57,4 @@ const ProductList = ({ category = null }) =>
 };
 
 export default ProductList;
+

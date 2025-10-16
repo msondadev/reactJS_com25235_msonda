@@ -8,7 +8,7 @@ const ProductDetail = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${id}`)
+    fetch(`https://dummyjson.com/products/${id}`)
       .then(res => res.json())
       .then(data => {
         setProducto(data);
@@ -26,7 +26,7 @@ const ProductDetail = () => {
   return (
     <Container className="my-5">
       <Card className="shadow">
-        <Card.Img variant="top" src={producto.image} style={{ height: '300px', objectFit: 'contain' }} />
+        <Card.Img variant="top" src={producto.thumbnail} style={{ height: '300px', objectFit: 'contain' }} />
         <Card.Body>
           <Card.Title>{producto.title}</Card.Title>
           <Card.Text>{producto.description}</Card.Text>
