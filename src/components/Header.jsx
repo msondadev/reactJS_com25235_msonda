@@ -10,8 +10,9 @@ const Header = () => {
       <Container>
         <Navbar.Brand as={NavLink} to="/" className="d-flex align-items-center">
           <img
-            src="https://via.placeholder.com/40"
-            alt="Logo"
+            src="/logo_Gringo's.jpg"
+            alt="Gringo's Logo"
+            style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: 'white', padding: '2px' }}
             className="d-inline-block align-top me-2"
           />
           <span>Gringo's Supermercados - Los mejores precios</span>
