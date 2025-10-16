@@ -11,3 +11,7 @@ bootstrap
 • npm install @fortawesome/free-brands-svg-icons
 
 
+
+npm install font-awesome
+import 'font-awesome/css/font-awesome.min.css';
+

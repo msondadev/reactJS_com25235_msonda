@@ -7,11 +7,11 @@ const Footer = () => {
     <footer className="bg-dark text-white text-center py-4 mt-4">
       <Container>
         <Row>
-          <col md={6}>
+          <Col md={6}>
             <p className="mb-0">Gringo's Supermercados</p>
             <p className="mb-0">Avenida 7 y 64</p>
-          </col>
-          <col md={6}>
+          </Col>
+          <Col md={6}>
             <div>
               <a href="#" className="text-white me-3">
                 <i className="fa fa-facebook fa-2x"></i>
@@ -23,7 +23,7 @@ const Footer = () => {
                 <i className="fa fa-instagram fa-2x"></i>
               </a>
             </div>
-          </col>
+          </Col>
         </Row>
       </Container>
     </footer>
