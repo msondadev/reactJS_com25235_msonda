@@ -7,7 +7,7 @@ import Ofertas from './paginas/Ofertas';
 import Infaltables from './paginas/Infaltables';
 import RutaProtegida from './components/RutaProtegida';
 import ProductDetail from './paginas/ProductDetail';
-import Administracion from './paginas/Administracion';
+import CrudProductos from './components/CrudProductos';
 
 function App() {
 
@@ -17,7 +17,7 @@ function App() {
         <Header />
           <Routes>
             {/* <Route path="/administracion" element={<Login />} /> Esta es la que va */}
-            <Route path="/administracion" element={<Administracion />} /> 
+            <Route path="/administracion" element={<CrudProductos />} /> Esta es temporal hasta que funcione el Login
             <Route path="/" element={<Home />} />
             <Route path="/ofertas" element={<Ofertas />} />
             <Route path="/infaltables" element={<Infaltables />} />
