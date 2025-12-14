@@ -4,6 +4,7 @@ import { CartContext } from './CartContext';
 
 const Carrito = () => {
   const { carrito, eliminarDelCarrito } = useContext(CartContext); 
+  console.log('CARRITO:', carrito);
 
   const total = carrito.reduce((acc, item) => acc + Number(item.price) * item.cantidad, 0);
 

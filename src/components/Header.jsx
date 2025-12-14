@@ -22,13 +22,11 @@ const Header = () => {
           <Nav.Link as={NavLink} to="/" className="me-3">
             Inicio
           </Nav.Link>
-          <Nav.Link as={NavLink} to="/ofertas" className="me-3">
-            Ofertas
+          
+          <Nav.Link as={NavLink} to="/productos" className="me-3">
+            Productos
           </Nav.Link>
-          <Nav.Link as={NavLink} to="/infaltables" className="me-3">
-            Infaltables
-          </Nav.Link>
-
+          
           <div className="d-flex align-items-center">
             <Button variant="outline-light" as={NavLink} to="/administracion" className="me-2">
               Administración
