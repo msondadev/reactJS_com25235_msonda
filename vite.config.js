@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base:"/etapa2/",
+  base:"/reactJS_com25235_msonda/",
   optimizeDeps: {
     include: ['@fortawesome/fontawesome-free']
   },
