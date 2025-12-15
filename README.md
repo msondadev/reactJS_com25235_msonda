@@ -1,16 +1,27 @@
-# React + Vite
+# Aplicación de Productos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Instalación
+1. Clonar este repositorio:
+   git clone https://github.com/msondadev/reactJS_com25235_msonda/tree/etapa2
 
-Currently, two official plugins are available:
+2. Entrar en la carpeta del proyecto:
+    cd nombre-del-repo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+3. Instalar dependencias:
+    npm install
 
-## React Compiler
+▶️ Uso
+- Iniciar la aplicación en modo desarrollo:
+    npm run dev 
+    Y luego click sobre la URL.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+    Sino:
+    npm run dev -- --open
+    Y abre el navegador directamente.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🛠 Funcionalidades principales- 
+- CRUD de productos conectado a MockAPI.
+- Filtrado por nombre y categoría.
+- Vista de detalle con stock, precio e imagen.
+- Agregar al carrito con notificación visual (Toast)
