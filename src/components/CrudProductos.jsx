@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button, Form, Modal } from "react-bootstrap";
 
-// Creamos una variable para evitar usar la URL de la API
 const API_URL = "https://68489b9bec44b9f349416b0e.mockapi.io/api/productos";
 
 const CrudProductos = () => {
@@ -13,11 +12,10 @@ const CrudProductos = () => {
     price: "",
     stock: "",
     image: "",
+    category: "",
   });
   const [editId, setEditId] = useState(null);
 
- 
- // fetch --> Obtengo los productos 
   const getProductos = () => {
     fetch(API_URL)
       .then((res) => res.json())
@@ -25,31 +23,31 @@ const CrudProductos = () => {
       .catch((error) => console.error("Error al obtener productos:", error));
   };
 
-  // cierro el modal
   const handleClose = () => {
     setShow(false);
-    setForm({ title: "", description: "", price: "", stock: "", image: "" });
+    setForm({
+      title: "",
+      description: "",
+      price: "",
+      stock: "",
+      image: "",
+      category: "",
+    });
     setEditId(null);
   };
 
-  //Abrir modal 
   const handleShow = (producto) => {
     setShow(true);
     if (producto) {
       setForm({
-        ...producto, //Operador de propagación. Crea un objeto nuevo paralelo para trabajar con ese mismo
+        ...producto,
         price: Number(producto.price),
-        stock: Number(producto.stock), // Función Number(): Transforma a número**
-        
+        stock: Number(producto.stock),
       });
       setEditId(producto.id);
     }
   };
-  // **Lo transforma a número porque del JSON viene como texto, por más que sea un número. 
-  // **Entonces por eso tengo que convertirlo (hacemos lo que sería un 'parsing de json')
 
-
-  // Crear o editar un  producto
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -58,11 +56,10 @@ const CrudProductos = () => {
       price: Number(form.price),
       stock: Number(form.stock),
     };
-    // Backend   
+
     const method = editId ? "PUT" : "POST";
     const url = editId ? `${API_URL}/${editId}` : API_URL;
-    
-    //Actualizo el servidor con un fetch
+
     fetch(url, {
       method: method,
       headers: { "Content-Type": "application/json" },
@@ -79,7 +76,6 @@ const CrudProductos = () => {
       .catch((error) => console.error("Error:", error));
   };
 
-  // Eliminar 
   const eliminarProducto = (id) => {
     if (!window.confirm("¿Seguro que quieres eliminar este producto?")) return;
 
@@ -91,12 +87,10 @@ const CrudProductos = () => {
       .catch((error) => console.error("Error:", error));
   };
 
-  // Cargar los productos - Renderiza de nuevo la pagina
   useEffect(() => {
     getProductos();
   }, []);
 
-  // Bootstrap
   return (
     <div className="container mt-4">
       <h2>CRUD de Productos</h2>
@@ -112,6 +106,7 @@ const CrudProductos = () => {
             <th>Precio</th>
             <th>Stock</th>
             <th>Imagen</th>
+            <th>Categoría</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -135,6 +130,7 @@ const CrudProductos = () => {
                   <span>{prod.image}</span>
                 )}
               </td>
+              <td>{prod.category}</td>
               <td>
                 <Button
                   size="sm"
@@ -216,6 +212,24 @@ const CrudProductos = () => {
               />
             </Form.Group>
 
+            <Form.Group className="mb-2">
+              <Form.Label>Categoría</Form.Label>
+              <Form.Select
+                value={form.category}
+                onChange={(e) =>
+                  setForm({ ...form, category: e.target.value })
+                }
+                required
+              >
+                <option value="">Seleccionar</option>
+                <option value="almacen">Almacén</option>
+                <option value="bebidas">Bebidas</option>
+                <option value="limpieza">Limpieza</option>
+                <option value="lacteos">Lácteos</option>
+                <option value="mascotas">Mascotas</option>
+              </Form.Select>
+            </Form.Group>
+
             <Button type="submit" className="mt-2">
               Guardar
             </Button>
@@ -227,3 +241,4 @@ const CrudProductos = () => {
 };
 
 export default CrudProductos;
+

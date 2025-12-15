@@ -1,18 +1,20 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Container, Card, Button, Toast, ToastContainer } from 'react-bootstrap'; // importamos Toast y ToastContainer
+import { Container, Card, Button, Toast, ToastContainer } from 'react-bootstrap';
 import { CartContext } from '../components/CartContext';
+
+const API_URL = "https://68489b9bec44b9f349416b0e.mockapi.io/api/productos";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [showToast, setShowToast] = useState(false); // agregamos el toast
+  const [showToast, setShowToast] = useState(false);
 
   const { agregarAlCarrito } = useContext(CartContext);
 
   useEffect(() => {
-    fetch(`https://dummyjson.com/products/${id}`)
+    fetch(`${API_URL}/${id}`)
       .then(res => res.json())
       .then(data => {
         setProducto(data);
@@ -33,8 +35,8 @@ const ProductDetail = () => {
       title: producto.title,
       price: producto.price
     });
-    setShowToast(true); // mostrar Toast
-    setTimeout(() => setShowToast(false), 2000); // ocultar automáticamente
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 2000);
   };
 
   return (
@@ -52,13 +54,20 @@ const ProductDetail = () => {
       <Card className="shadow">
         <Card.Img
           variant="top"
-          src={producto.thumbnail}
+          src={
+            producto.image && producto.image.startsWith("http")
+              ? producto.image
+              : "https://cdn-icons-png.flaticon.com/512/1170/1170678.png"
+          }
           style={{ height: '300px', objectFit: 'contain' }}
+          alt={producto.title}
         />
         <Card.Body>
           <Card.Title>{producto.title}</Card.Title>
           <Card.Text>{producto.description}</Card.Text>
-          <Card.Text><strong>${producto.price.toFixed(2)}</strong></Card.Text>
+          <Card.Text><strong>${Number(producto.price).toFixed(2)}</strong></Card.Text>
+          <Card.Text><strong>Stock:</strong> {producto.stock}</Card.Text>
+          <Card.Text><strong>Categoría:</strong> {producto.category}</Card.Text>
 
           <Button variant="success" className="me-2" onClick={handleAgregar}>
             Agregar al carrito
@@ -72,3 +81,4 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
+

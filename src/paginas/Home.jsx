@@ -1,17 +1,26 @@
-import React from "react";
-import ProductList from "../components/ProductList";
+import React from 'react';
+import { Container } from 'react-bootstrap';
+import ProductList from '../components/ProductList';
 
 const Home = () => {
   return (
-    <div className="container">
+    <Container className="mt-4">
 
-      <h3>🔥 Ofertas</h3>
-      <ProductList tipo="ofertas" limit={5} />
+      {/* OFERTAS */}
+      <h2 className="mb-3">🔥 Ofertas</h2>
+      <ProductList
+        tipo="ofertas"
+        limit={6}
+      />
 
-      <h3 className="mt-4">🛒 Infaltables</h3>
-      <ProductList tipo="infaltables" limit={5} />
+      {/* INFALTABLES */}
+      <h2 className="mt-5 mb-3">🛒 Infaltables</h2>
+      <ProductList
+        tipo="infaltables"
+        limit={6}
+      />
 
-    </div>
+    </Container>
   );
 };
 
